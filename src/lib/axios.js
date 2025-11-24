@@ -1,6 +1,8 @@
 import axios from "axios";
 
+const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:8080" : "https://talktive-backend.onrender.com";
+
 export const axiosInstance = axios.create({
-  baseURL: import.meta.env.MODE === "development" ? "http://localhost:8080/api" : "/api",
+  baseURL: BASE_URL + "/api",   // IMPORTANT!!
   withCredentials: true,
 });
