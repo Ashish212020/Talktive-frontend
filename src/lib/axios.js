@@ -20,3 +20,17 @@ axiosInstance.interceptors.request.use(
     return Promise.reject(error);
   }
 );
+
+// Handle response and extract token if present
+axiosInstance.interceptors.response.use(
+  (response) => {
+    // If response has a token, save it
+    if (response.data.token) {
+      localStorage.setItem("token", response.data.token);
+    }
+    return response;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
